@@ -1,0 +1,83 @@
+html {
+    font-size: 25px;
+    font-family: 'Literata', serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 0.70rem;
+    background-color: #001534;
+}
+
+/* Styles for form of the timer */
+#timer-create {
+    margin: 0.8rem auto;
+    text-align: center;
+    font-size:0;
+    margin: 2rem;
+    height:8rem;
+
+}
+
+#timer-create form input {
+    margin:0;
+    display: inline;
+    border:0.1rem solid #ebebeb;
+    color:#222222c0;
+    padding: 0.25rem;
+    text-align:center;
+    font-size:0.9rem;
+    max-width: 3.5rem;
+    outline:none;
+}
+
+#timer-create form input[type="submit"] {
+    font-size: 0.7rem;
+    padding: 0.6rem;
+    margin: 0.4rem 0;
+    background-color: #003481;
+    color: #ffffffd0;
+    border:0;
+    max-width:7rem;
+}
+
+input:focus{
+    background-color:#fffffff5;
+}
+
+
+input:first-child {
+    border-radius: 0.35rem 0 0 0.35rem;
+}
+
+input:nth-child(4) {
+    border-radius: 0 0.35rem 0.35rem 0;
+}
+
+
+/* Timer Clock Styles */
+
+#timer-clock {
+    color: #ffffffaa;
+    text-align: center;
+    font-size: 1.25rem;
+    padding: 3rem;
+}
+
+#t-clock {
+    font-size: 1.5rem;
+}
+
+#t-digits-hours,
+#t-digits-mins,
+#t-digits-secs {
+    font-size: 1.25rem;
+}
+
+canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
