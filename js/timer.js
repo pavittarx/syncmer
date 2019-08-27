@@ -42,6 +42,7 @@ let timer = {
     },
 
     clock:async function(params){
+        console.log(params);
         let difference = await helpers.clock.calcDifference(params);   
         let data = await helpers.clock.generate(difference);
         helpers.clock.inject(data);     
@@ -86,10 +87,15 @@ let helpers = {
 
         // injects clock values
         inject: function (data) {
-            let ele = document.querySelectorAll('#t-clock > span');
+            /* let ele = document.querySelectorAll('#t-clock > span');
             ele[0].textContent = data.hours;
             ele[1].textContent = data.minutes;
-            ele[2].textContent = data.seconds;
+            ele[2].textContent = data.seconds; */
+
+            timer.data.days = data.days;
+            timer.data.hours = data.hours;
+            timer.data.minutes = data.minutes;
+            timer.data.seconds = data.seconds;
         },
 
         // generates the clock

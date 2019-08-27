@@ -3,7 +3,11 @@
 // Parameters of current URL Encoding
 function getParams() {
     var params = {};
-    window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+    let uri = window.location.href;
+    console.log(uri.indexOf("?"));
+    uri = uri.substr(uri.indexOf("?"));
+
+    uri.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
         params[key] = value;
     });
     params.stamp = parseInt(params.stamp);

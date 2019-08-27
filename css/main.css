@@ -75,9 +75,8 @@ input:nth-child(4) {
     font-size: 1.25rem;
 }
 
-canvas {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: -1;
+canvas{
+    font-family: 'Literata', sans-serif;
+    background-color:#ffffff;
+    color: #001534cc; 
 }
