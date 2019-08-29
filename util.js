@@ -18,7 +18,7 @@ function getParams() {
 // Gets Local Time of the current user...
 async function getLocalTime() {
     return new Promise((resolve, reject) => {
-        fetch('http://worldtimeapi.org/api/ip').then(function (response) {
+        fetch('https://worldtimeapi.org/api/ip').then(function (response) {
             if (response.ok)
                 return response.json();
             else
@@ -33,7 +33,7 @@ async function getLocalTime() {
 // Gets current Local Time of the provided timezone
 async function getTime(timezone) {
     return new Promise((resolve, reject) => {
-        fetch('http://worldtimeapi.org/api/timezone/' + timezone).then(function (response) {
+        fetch('https://worldtimeapi.org/api/timezone/' + timezone).then(function (response) {
             if (response.ok)
                 return response.json();
             else
