@@ -1,0 +1,14 @@
+name: Publish Project Website
+
+on: [push]
+push: 
+  branches: 
+    -master
+
+jobs:
+  create:
+    name: Publish Site
+    steps:
+    -name : Get Branches list
+    run: git branch
+    
