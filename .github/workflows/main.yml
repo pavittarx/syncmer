@@ -6,9 +6,9 @@ push:
     -master
 
 jobs:
-  create:
+  first:
     name: Publish Site
     steps:
-    -name : Get Branches list
-    run: git branch
+      -name : Get Branches list
+      run: git branch
     
