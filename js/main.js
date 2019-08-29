@@ -1,28 +1,26 @@
-/* Driver Module - It runds the code*/
+/* A Global Variabale used for displaying messages*/
+let message = document.getElementById('timer-message');
 
-function renderView() {
+/* Driver Module - It runds the code */
+async function renderView() {
     let params = getParams();
-    console.log('Params ', params)
     let create = document.getElementById('timer-create');
     let clock = document.getElementById('timer-clock');
-    let expired = document.getElementById('timer-expired');
 
     if (Object.values(params).length == 0) {
-        clock.style.display = "none";
-        expired.style.display = "none";
+        create.style.display = "block";
     } else {
-      if (params.stamp == undefined || params.tz == undefined) {
-            clock.style.display = "none";
-            expired.style.display = "none";
-        } else if (params.stamp < 1565069153 || isNaN(params.stamp) || !isNaN(params.tz)) {
-            alert('Oops! It seems like your timer is broken. Please create a new one.');
-            clock.style.display = "none";
-            expired.style.display = "none";
+        if (params.stamp == undefined || params.tz == undefined) {
+            create.className = "displayOn";
+        } else if (isNaN(params.stamp) || !isNaN(params.tz) || params.stamp < (await getTime(params.tz)).unixtime) {
+
+            message.className = "displayOn";
+            message.innerText = "Your timer has been expired or is broken, please create a new one.";
+            message.innerHTML += "<br/><a href=\"" + window.location.href + "\"> Create New  </a>";
         } else {
-            create.style.display = "none";
-            expired.style.display = "none";
+            clock.className = "displayOn";
             timer.clock(params);
-        } 
+        }
     }
 
 }

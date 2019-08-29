@@ -34,8 +34,10 @@ let timer = {
             console.log('Stamp', stamp);
             let timezone = currentTime.timezone;
             // adjusts timeStamp to ending time
-            stamp += parseInt(await helpers.create.calcUnixTimestampDifference(this.data));
-            console.log(window.location.hostname + '?stamp=' + stamp + '&tz=' + timezone);
+            stamp += parseInt(await helpers.create.getTimestampDifference(this.data));
+
+            message.style.display="block";
+            message.innerText=window.location.href + '?stamp=' + stamp + '&tz=' + timezone;
         } else {
             console.log('Error with Timer parameters.')
         }
@@ -47,6 +49,9 @@ let timer = {
         let data = await helpers.clock.generate(difference);
         helpers.clock.inject(data);     
         helpers.clock.update(data);
+        helpers.clock.push(this.data, data);
+
+        console.log('this.data -->', this.data);
     }
 
 }
@@ -56,13 +61,16 @@ let helpers = {
         validate: function () {
             let data = timer.data;
             let validation = true;
-            if (isNaN(data.days) || data.days < 0 || data.days > 365) validation = false;
+            if (isNaN(data.days) || data.days < 0 || data.days > 366) validation = false;
             if (isNaN(data.hours) || data.hours < 0 || data.hours > 23) validation = false;
             if (isNaN(data.minutes) || data.minutes < 0 || data.minutes > 59) validation = false;
             if (isNaN(data.seconds) || data.seconds < 0 || data.seconds > 59) validation = false;
+
+            message.innerText = "The timer values are incorrect. Please make sure timer values don't exceed 365 days, 23 hours, 59 minutes, 59 seconds.";
+            
             return validation;
         },
-        calcUnixTimestampDifference: function (data) {
+        getTimestampDifference: function (data) {
             return ((24 * 60 * 60 * data.days) + (60 * 60 * data.hours) + (60 * data.minutes) + (data.seconds));
         }
     },
@@ -87,15 +95,15 @@ let helpers = {
 
         // injects clock values
         inject: function (data) {
-            /* let ele = document.querySelectorAll('#t-clock > span');
-            ele[0].textContent = data.hours;
-            ele[1].textContent = data.minutes;
-            ele[2].textContent = data.seconds; */
+            let ele = document.querySelectorAll('#timer-clock > span');
+            ele[0].textContent = helpers.clock.convert(data.hours);
+            ele[1].textContent = helpers.clock.convert(data.minutes);
+            ele[2].textContent = helpers.clock.convert(data.seconds);
 
-            timer.data.days = data.days;
-            timer.data.hours = data.hours;
-            timer.data.minutes = data.minutes;
-            timer.data.seconds = data.seconds;
+            if(data.days>0){
+                document.getElementById('clock-days').innerText=data.days+' DAYS';
+
+            }
         },
 
         // generates the clock
@@ -149,7 +157,21 @@ let helpers = {
                     clearInterval(id);
                 }
                 this.inject(data);
+                
             }, 1000, data, this.inject)
+        },
+
+        push: function(timerData, data){
+
+            timerData.days = data.days;
+            timerData.hours = data.hours;
+            timerData.minutes = data.minutes;
+            timerData.seconds = data.seconds;
+        },
+
+        convert : function(num){
+            if(num < 9) return '0'+num;
+            else return num;
         }
     }
 }

@@ -8,75 +8,97 @@ body {
     padding: 0;
     font-size: 0.70rem;
     background-color: #001534;
+    color:#ffffffcc;
 }
 
-/* Styles for form of the timer */
-#timer-create {
-    margin: 0.8rem auto;
-    text-align: center;
-    font-size:0;
-    margin: 2rem;
-    height:8rem;
-
-}
-
-#timer-create form input {
-    margin:0;
-    display: inline;
-    border:0.1rem solid #ebebeb;
-    color:#222222c0;
-    padding: 0.25rem;
+#timer-message{
+    background-color:#fffffffc;
+    color:#001534ec;
     text-align:center;
-    font-size:0.9rem;
-    max-width: 3.5rem;
-    outline:none;
+    padding:12px 5px;
+    margin:10px;
 }
 
-#timer-create form input[type="submit"] {
-    font-size: 0.7rem;
-    padding: 0.6rem;
-    margin: 0.4rem 0;
-    background-color: #003481;
-    color: #ffffffd0;
-    border:0;
-    max-width:7rem;
+#timer-create{
+    background-color:#fffffffc;
+    margin:13px;
+    padding: 10px 15px;
+    text-align:center;
+
 }
 
-input:focus{
-    background-color:#fffffff5;
+#timer-form input{
+    width:50px;
+    border:1px solid #0015343c;
+    color:#001534dc;
+    padding:10px;
+    text-align:center;
 }
 
-
-input:first-child {
-    border-radius: 0.35rem 0 0 0.35rem;
+#timer-create input[type="submit"]{
+    margin: 10px;
+    width:120px;
+    background-color:#fffffffc;
+    color:#001534cc;
+    padding:7px;
 }
 
-input:nth-child(4) {
-    border-radius: 0 0.35rem 0.35rem 0;
+#timer-create input[type="submit"]:hover{
+    background-color:#001534dc;
+    color:#ffffffcc;
 }
 
-
-/* Timer Clock Styles */
-
-#timer-clock {
-    color: #ffffffaa;
-    text-align: center;
-    font-size: 1.25rem;
-    padding: 3rem;
+timer-form input:placeholder{
+    color:#0015348c;
 }
 
-#t-clock {
-    font-size: 1.5rem;
+#timer-clock{
+    background-color:#fffffffc; 
+    color:#001534cc;
+    text-align:center;
+    margin:10px;
+    padding:15px;
+    font-size:27px;
 }
 
-#t-digits-hours,
-#t-digits-mins,
-#t-digits-secs {
-    font-size: 1.25rem;
+#clock-days{
+    font-size:30px;
 }
 
-canvas{
-    font-family: 'Literata', sans-serif;
-    background-color:#ffffff;
-    color: #001534cc; 
+section{
+    display:none;
+}
+
+.displayOn{
+    display: block;
+    animation: show 0.5s;
+}
+
+.displayOff{
+    animation: show 0.5s;
+    animation-direction:reverse;
+    display:none;
+}
+
+@keyframes show{
+    0%{
+        opacity:0;
+        transform:translateY(-100%);  
+    }
+    25%{
+        opacity:0.25;
+        transform:translateY(-50%);
+    }
+    50%{
+        opacity:0.5;
+        transform:translateY(-25%);
+    }
+    75%{
+        opacity:0.75;
+        transform:translateY(-10%);
+    }
+    100%{
+        opacity:1;
+        transform:translateY(0);        
+    }
 }

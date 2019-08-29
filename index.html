@@ -9,23 +9,30 @@
 
 <body>
     <main>
+        <section id="timer-message">
+            -
+        </section>
+
         <section id="timer-create">
             <form id="timer-form">
-                <input name="days" type="text" placeholder="days" />
-                <input name="hours" type="text" placeholder="hrs" />
-                <input name="minutes" type="text" placeholder="min" />
-                <input name="seconds" type="text" placeholder="sec" />
+                <input name="days" type="text" placeholder="DAYS" />
+                <input name="hours" type="text" placeholder="Hours" />
+                <input name="minutes" type="text" placeholder="Mins" />
+                <input name="seconds" type="text" placeholder="Sec" />
                 <br>
                 <input type="submit"  value="Create Timer" onclick="timer.create(event)"/>
             </form>
         </section>
-        
-        <canvas id="clock-canvas"> </canvas>
-        
-        <section id="timer-expired"></section>
+
+        <section id="timer-clock">
+            <div id="clock-days"> </div>
+            <span> </span> :
+            <span> </span> :
+            <span></span> 
+        </section>
     </main>
     <script src="./js/timer.js"></script>
     <script src="./js/main.js"></script>
-    ><script src="./js/canvas.js"></script>
+    <script src="./js/canvas.js"></script>
 </body>
 </html>

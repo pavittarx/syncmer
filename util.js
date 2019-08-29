@@ -4,7 +4,8 @@
 function getParams() {
     var params = {};
     let uri = window.location.href;
-    console.log(uri.indexOf("?"));
+
+    console.log(uri.indexOf("?"), uri);
     uri = uri.substr(uri.indexOf("?"));
 
     uri.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
