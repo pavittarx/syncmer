@@ -1,14 +1,13 @@
 name: Publish Project Website
 
 on: [push]
-push: 
-  branches: 
-    -master
-
-jobs:
-  first:
-    name: Publish Site
-    steps:
-      -name : Get Branches list
-      run: git branch
+  push: 
+    branches: 
+      -master
+  jobs:
+    first:
+      name: Publish Site
+      steps:
+        -name : Get Branches list
+        run: git branch
     
