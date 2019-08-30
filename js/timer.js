@@ -23,6 +23,10 @@ let timer = {
             }
         }
 
+        let create = document.getElementById('timer-form');
+        create.style.backgroundColor="none";
+        create.innerHTML = '<img src="./docs/loading.gif" />';
+
         this.data.days = parseInt(formData[0].value);
         this.data.hours = parseInt(formData[1].value);
         this.data.minutes = parseInt(formData[2].value);
@@ -36,18 +40,17 @@ let timer = {
             // adjusts timeStamp to ending time
             stamp += parseInt(await helpers.create.getTimestampDifference(this.data));
 
-            message.style.display="block";
-            message.innerText=window.location.href + '?stamp=' + stamp + '&tz=' + timezone;
+            window.location = '?stamp=' + stamp + "&tz=" + timezone;
         } else {
             console.log('Error with Timer parameters.')
         }
     },
 
-    clock:async function(params){
+    clock: async function (params) {
         console.log(params);
-        let difference = await helpers.clock.calcDifference(params);   
+        let difference = await helpers.clock.calcDifference(params);
         let data = await helpers.clock.generate(difference);
-        helpers.clock.inject(data);     
+        helpers.clock.inject(data);
         helpers.clock.update(data);
         helpers.clock.push(this.data, data);
 
@@ -59,6 +62,7 @@ let timer = {
 let helpers = {
     create: {
         validate: function () {
+
             let data = timer.data;
             let validation = true;
             if (isNaN(data.days) || data.days < 0 || data.days > 366) validation = false;
@@ -67,7 +71,7 @@ let helpers = {
             if (isNaN(data.seconds) || data.seconds < 0 || data.seconds > 59) validation = false;
 
             message.innerText = "The timer values are incorrect. Please make sure timer values don't exceed 365 days, 23 hours, 59 minutes, 59 seconds.";
-            
+
             return validation;
         },
         getTimestampDifference: function (data) {
@@ -100,8 +104,8 @@ let helpers = {
             ele[1].textContent = helpers.clock.convert(data.minutes);
             ele[2].textContent = helpers.clock.convert(data.seconds);
 
-            if(data.days>0){
-                document.getElementById('clock-days').innerText=data.days+' DAYS';
+            if (data.days > 0) {
+                document.getElementById('clock-days').innerText = data.days + ' DAYS';
 
             }
         },
@@ -154,14 +158,16 @@ let helpers = {
                         minutes: 0,
                         seconds: 0
                     }
+                    message.className="displayOn";
+                    message.innerText = "Your timer has expired.";
                     clearInterval(id);
                 }
                 this.inject(data);
-                
+
             }, 1000, data, this.inject)
         },
 
-        push: function(timerData, data){
+        push: function (timerData, data) {
 
             timerData.days = data.days;
             timerData.hours = data.hours;
@@ -169,8 +175,8 @@ let helpers = {
             timerData.seconds = data.seconds;
         },
 
-        convert : function(num){
-            if(num < 9) return '0'+num;
+        convert: function (num) {
+            if (num < 10) return '0' + num;
             else return num;
         }
     }

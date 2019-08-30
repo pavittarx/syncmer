@@ -8,97 +8,135 @@ body {
     padding: 0;
     font-size: 0.70rem;
     background-color: #001534;
-    color:#ffffffcc;
+    color: #ffffffcc;
 }
 
-#timer-message{
-    background-color:#fffffffc;
-    color:#001534ec;
-    text-align:center;
-    padding:12px 5px;
-    margin:10px;
-}
-
-#timer-create{
-    background-color:#fffffffc;
-    margin:13px;
-    padding: 10px 15px;
-    text-align:center;
-
-}
-
-#timer-form input{
-    width:50px;
-    border:1px solid #0015343c;
-    color:#001534dc;
-    padding:10px;
-    text-align:center;
-}
-
-#timer-create input[type="submit"]{
+#timer-message {
+    background-color: #fffffffc;
+    color: #001534ec;
+    text-align: center;
+    padding: 12px 5px;
     margin: 10px;
-    width:120px;
-    background-color:#fffffffc;
-    color:#001534cc;
-    padding:7px;
 }
 
-#timer-create input[type="submit"]:hover{
-    background-color:#001534dc;
-    color:#ffffffcc;
+#timer-create {
+    background-color: #fffffffc;
+    margin: 13px;
+    padding: 10px 15px;
+    text-align: center;
+
 }
 
-timer-form input:placeholder{
-    color:#0015348c;
+#timer-form input {
+    width: 50px;
+    border: 1px solid #0015343c;
+    color: #001534dc;
+    padding: 10px;
+    text-align: center;
 }
 
-#timer-clock{
-    background-color:#fffffffc; 
-    color:#001534cc;
-    text-align:center;
-    margin:10px;
-    padding:15px;
-    font-size:27px;
+#timer-create input[type="submit"] {
+    margin: 10px;
+    width: 120px;
+    background-color: #fffffffc;
+    color: #001534cc;
+    padding: 7px;
 }
 
-#clock-days{
-    font-size:30px;
+#timer-create input[type="submit"]:hover {
+    background-color: #001534dc;
+    color: #ffffffcc;
 }
 
-section{
-    display:none;
+timer-form input:placeholder {
+    color: #0015348c;
 }
 
-.displayOn{
+#timer-clock {
+    background-color: #fffffffc;
+    color: #001534cc;
+    text-align: center;
+    margin: 10px;
+    padding: 15px;
+    font-size: 27px;
+}
+
+#clock-days {
+    font-size: 30px;
+}
+
+section {
+    display: none;
+}
+
+.displayOn {
     display: block;
     animation: show 0.5s;
 }
 
-.displayOff{
+.displayOff {
     animation: show 0.5s;
-    animation-direction:reverse;
-    display:none;
+    animation-direction: reverse;
+    display: none;
 }
 
-@keyframes show{
-    0%{
-        opacity:0;
-        transform:translateY(-100%);  
+@keyframes show {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
     }
-    25%{
-        opacity:0.25;
-        transform:translateY(-50%);
+
+    25% {
+        opacity: 0.25;
+        transform: translateY(-50%);
     }
-    50%{
-        opacity:0.5;
-        transform:translateY(-25%);
+
+    50% {
+        opacity: 0.5;
+        transform: translateY(-25%);
     }
-    75%{
-        opacity:0.75;
-        transform:translateY(-10%);
+
+    75% {
+        opacity: 0.75;
+        transform: translateY(-10%);
     }
-    100%{
-        opacity:1;
-        transform:translateY(0);        
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
+}
+
+#timer-link>input {
+    display: none;
+}
+
+.button:hover {
+    border: 0;
+    background-color: #001534;
+    color: #ffffffcc;
+    padding: 10px 13px;
+    outline: 0;
+}
+
+.button{
+    border: 0;
+    color: #001534;
+    background-color: #ffffffcc;
+    padding: 5px 15px;
+    border-top: 2px solid #001534cc;
+    transition: 0.5s all ease-in;
+    text-decoration: none;
+    font-size:18px;
+    font-family: 'Literata', serif;
+
+}
+
+#timer-link{
+    margin-top: 10px;
+}
+
+br{
+    display: block;
+    margin-top:10px;
 }

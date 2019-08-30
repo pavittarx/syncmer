@@ -15,8 +15,7 @@ async function renderView() {
         } else if (isNaN(params.stamp) || !isNaN(params.tz) || params.stamp < (await getTime(params.tz)).unixtime) {
 
             message.className = "displayOn";
-            message.innerText = "Your timer has been expired or is broken, please create a new one.";
-            message.innerHTML += "<br/><a href=\"" + window.location.href + "\"> Create New  </a>";
+            message.innerHTML = '<div> Your timer has been expired or is broken, please create a new one. </div><br/> <a class="button" style="padding-top:0;" href="/"> Create New Timer </a> ';
         } else {
             clock.className = "displayOn";
             timer.clock(params);
@@ -26,3 +25,14 @@ async function renderView() {
 }
 
 renderView();
+
+
+function copy() {
+    let link = document.querySelector('#timer-link > input');
+    link.value = window.location.href;
+    link.select();
+    link.setSelectionRange(0, 9999);
+    document.execCommand("copy");
+
+    alert('The shareable link has been successfully copied. \n Share Now!');
+}
