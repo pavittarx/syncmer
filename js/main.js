@@ -15,7 +15,7 @@ async function renderView() {
         } else if (isNaN(params.stamp) || !isNaN(params.tz) || params.stamp < (await getTime(params.tz)).unixtime) {
 
             message.className = "displayOn";
-            message.innerHTML = '<div> Your timer has been expired or is broken, please create a new one. </div><br/> <a class="button" style="padding-top:0;" href="/"> Create New Timer </a> ';
+            message.innerHTML = '<div> Your timer has been expired or is broken, please create a new one. </div><br/> <a class="button" style="padding-top:0;" href="/syncmer"> Create New Timer </a> ';
         } else {
             clock.className = "displayOn";
             timer.clock(params);
