@@ -2,8 +2,11 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="./css/main.css"></link>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="./css/main.css"/>
     <script src="./util.js"></script>
+
     <link href="https://fonts.googleapis.com/css?family=Literata&display=swap" rel="stylesheet">
 </head>
 
@@ -20,7 +23,7 @@
                 <input name="minutes" type="text" placeholder="Mins" />
                 <input name="seconds" type="text" placeholder="Sec" />
                 <br>
-                <input type="submit"  value="Create Timer" onclick="timer.create(event)"/>
+                <input type="submit" value="Create Timer" onclick="timer.create(event)" />
             </form>
         </section>
 
@@ -28,11 +31,17 @@
             <div id="clock-days"> </div>
             <span> </span> :
             <span> </span> :
-            <span></span> 
+            <span></span>
+            <div id="timer-link">
+                <input type="text" />
+                <button class="button" onClick="copy()"> Copy Link </button>
+                <a class="button" href="/"> Create New </a>
+            </div>
         </section>
     </main>
     <script src="./js/timer.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/canvas.js"></script>
 </body>
+
 </html>
