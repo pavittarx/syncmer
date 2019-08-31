@@ -1,6 +1,8 @@
 # syncmer
 A synchronized web based timer, that can be shared via a link.
 
+View Live Version: [Click here](https://pavittarx.github.io/syncmer)
+
 ## Developer Docs
 
 ![module description](docs/infographic.jpg)

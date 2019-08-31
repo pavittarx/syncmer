@@ -23,9 +23,6 @@ let timer = {
             }
         }
 
-        let create = document.getElementById('timer-form');
-        create.style.backgroundColor="none";
-        create.innerHTML = '<img src="./docs/loading.gif" />';
 
         this.data.days = parseInt(formData[0].value);
         this.data.hours = parseInt(formData[1].value);
@@ -33,6 +30,13 @@ let timer = {
         this.data.seconds = parseInt(formData[3].value);
 
         if (helpers.create.validate()) {
+            // displays loader
+            let create = document.getElementById('timer-create');
+            create.style.backgroundColor = "inherit";
+            create.style.maxWidth = "none";
+            create.innerHTML = '<img src="./docs/loading.gif" style="max-width:' + create.clientWidth + ';" />';
+
+
             let currentTime = await getLocalTime();
             let stamp = currentTime.unixtime;
             console.log('Stamp', stamp);
@@ -70,8 +74,10 @@ let helpers = {
             if (isNaN(data.minutes) || data.minutes < 0 || data.minutes > 59) validation = false;
             if (isNaN(data.seconds) || data.seconds < 0 || data.seconds > 59) validation = false;
 
-            message.innerText = "The timer values are incorrect. Please make sure timer values don't exceed 365 days, 23 hours, 59 minutes, 59 seconds.";
-
+            if (!validation) {
+                message.classList = "displayOn";
+                message.innerText = "The timer values are incorrect. Please make sure timer values don't exceed 365 days, 23 hours, 59 minutes, 59 seconds.";
+            }
             return validation;
         },
         getTimestampDifference: function (data) {
@@ -158,7 +164,7 @@ let helpers = {
                         minutes: 0,
                         seconds: 0
                     }
-                    message.className="displayOn";
+                    message.className = "displayOn";
                     message.innerText = "Your timer has expired.";
                     clearInterval(id);
                 }
