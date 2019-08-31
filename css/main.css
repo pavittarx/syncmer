@@ -62,7 +62,7 @@ timer-form input:placeholder {
 }
 
 #clock-days {
-    font-size: 30px;
+    font-size: 35px;
 }
 
 section {
@@ -107,7 +107,7 @@ section {
     }
 }
 
-#timer-link>input {
+#timer-link > input {
     display: none;
 }
 
@@ -133,10 +133,43 @@ section {
 }
 
 #timer-link{
-    margin-top: 10px;
+    margin-top: 13px;
 }
 
 br{
     display: block;
     margin-top:10px;
 }
+
+
+header {
+    padding: 15px;
+    font-size: 27px;
+    margin-bottom: 20px;
+    text-align:center;
+}
+
+#timer-create, #timer-clock{
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#timer-message{
+    max-width: 800px;
+    margin: 13px auto;
+}
+
+footer{
+    margin-top: 50px;
+    padding: 25px;
+    border-top: 1px solid #ffffff5c;
+ }
+
+ footer a{
+     text-decoration: none;
+     color: #ffffffac;
+ }
+
+ footer > * {
+     margin-bottom: 10px;
+ }
